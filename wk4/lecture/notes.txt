@@ -1,0 +1,21 @@
+Abstract
+    Not real    dreams
+    taking/grouping functional components   => getting common things
+
+
+the same graphic chip, processor, memory chip
+
+DRY     do not repeat yourself      organizing code
+
+class that is abstract
+    dedicated as a super/base/parent class
+    cannot be instantiated
+    goal: group common functions of the class
+    Can have
+        regular method aka concrete methods
+        abstract methods
+            a method that exits but has no default implementation
+                think area, perimeter of a Shape
+
+Shape
+    who can give clear definition of a Shape
