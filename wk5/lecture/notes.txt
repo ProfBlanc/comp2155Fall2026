@@ -1,0 +1,31 @@
+paramiko is a low-level module
+    must not only outline major steps, but also the behind the scene steps
+
+SSHClient       class to connect
+
+.connect(), .close()
+
+after connecting
+    exec_command()  execute a command, then close communication
+                        great for one-time commands
+                        not suitable to multi-layered commands
+
+        returns stdinput, stdoutput, stderror tuple
+            as bytes that need to be decoded
+    invoke_shell
+                    imulate/duplicate a Terminal environment
+                    super tedious to work with but is ideal choice
+                        more control
+                        communication stay open
+                    should wait (time.sleep()) after sending command
+
+                    send()  to send a command
+                            DO NOT forget to add enter key ('\n')
+                                if not, command will not execute
+                    sendall()   used for commands that expect large return
+
+                    recv(# of bytes)
+
+                    bytes are NOT strings but can easily be converted to strings
+                        decode() => bytes to string
+                        encode() => string to bytes

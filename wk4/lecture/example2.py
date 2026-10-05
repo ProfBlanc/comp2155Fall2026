@@ -7,8 +7,8 @@ Create a Fighting Game
         name
         health
         power
-    Boss has a can use a special move once that attacks by 3x power
-    Player can block an attack twice
+    Boss has a can use a special move between 1 and 3 times that attacks by 3x power
+    Player can block an attack between 1 and 3 times
 
 
 How many classes to make? Name them
@@ -23,41 +23,105 @@ import random
 from abc import ABC, abstractmethod
 class Player(ABC):
     def __init__(self, name, health, power):
-        self.name = name
-        self.health = health
-        self.power = power
+        self.__name = name
+        self.__health = health
+        self.__power = power
+    @property
+    def name(self): return self.__name
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str) or len(value) < 3:
+            raise ValueError("Invalid name. Min 3 characters")
+        self.__name = value
+    @property
+    def health(self):
+        return self.__health
+    @health.setter
+    def health(self, value):
+        if type(value) != int or value < 50 or value > 100: raise ValueError("Invalid health. Values must be between 50 and 100")
+        self.__health = value
+    @property
+    def power(self):
+        return self.__power
+    @power.setter
+    def power(self, value):
+        if type(value) != int or value < 4 or value > 10: raise ValueError("Invalid power. Values must be between 5 and 10")
+        self.__power = value
     @abstractmethod
-    def shout_catch_phrase(self): pass
+    def shout_catch_phrase(self):
+        pass
     # common actions between Boss & Player
 
-    def attack(self, opponent):
+    def _gets_attacked(self, opponent):
+        self._verify_opponent(opponent)
+        self.__health -= opponent.power
+
+    def _verify_opponent(self, opponent):
         if not isinstance(opponent, Player):
             raise TypeError("opponent must be an Player")
-        opponent.health -= self.power
+
+    def attack(self, opponent):
+        self._verify_opponent(opponent)
+        opponent._gets_attacked(self)
+        self._summarize_attack(opponent)
+
+    def _summarize_attack(self, opponent):
+        self._verify_opponent(opponent)
+        print(self.name, "is attacking", opponent.name, "with a power of", self.power)
+        if opponent.health <= 0:
+            print(opponent.name, "no longer has any health remaining")
+        else:
+            print(opponent.name, "now has a health of", opponent.health)
+
+    def _amplify_power(self, magnifier):
+        if magnifier < 2 or magnifier > 5: raise ValueError("Invalid Power Magnifier")
+        self.__power *= magnifier
+
     def is_alive(self): return self.health > 0
 
 class Fighter(Player):
-    def __init__(self, name, health, power, block_attempts=2):
+    def __init__(self, name, health, power, block_attempts=random.randint(1, 3)):
         super().__init__(name, health, power)
         self.__block_attempts = block_attempts
-    def attack(self, opponent):
-        super().attack(opponent)
 
+    def _gets_attacked(self, opponent):
+        self._verify_opponent(opponent)
         if self.__block_attempts > 0:
-            use_block = input(f"You have {self.__block_attempts} blocks remaining. Do you want to use one? y/n: ")
+            use_block = input(f"{self.name} has {self.__block_attempts} blocks remaining. Do you want to use one? y/n: ")
             if use_block.strip().lower() == "y":
-                opponent.health += self.power
                 self.__block_attempts -= 1
-            # just as an example. currently in reserve order
+                return
+        super()._gets_attacked(opponent)
 
     def shout_catch_phrase(self):
-        return f"You're not that tough!"
+        choices = ["You're not that tough!", "Ha, Ha, Ha!", "Resistance is futile!", "Too bad, so sad!"]
+        return f"I'm {self.name}! {random.choice(choices)}"
+    @classmethod
+    def duplicate_boss(cls, boss):
+        if not isinstance(boss, Boss):
+            raise TypeError("fighter must be a Boss")
+        return cls(boss.name, boss.health, boss.power)
 
 class Boss(Player):
-    def __init__(self, name, health, power, attack_amplifier=1):
+    def __init__(self, name, health, power, attack_amplifier=random.randint(1, 3)):
         super().__init__(name, health, power)
         self.__attack_amplifier = attack_amplifier
-    def shout_catch_phrase(self): return "Easy as 1,2,3"
+    def attack(self, opponent):
+        if self.__attack_amplifier > 0:
+            answer = input(f"{self.name} has {self.__attack_amplifier} attack amplifiers remaining. Do you want to use one? y/n: ")
+            if answer.strip().lower() == "y":
+                self.__attack_amplifier -= 1
+
+                stronger_self = Fighter.duplicate_boss(self)
+                stronger_self._amplify_power(3)
+
+                opponent._gets_attacked(stronger_self)
+                stronger_self._summarize_attack(opponent)
+                return
+        super().attack(opponent)
+    def shout_catch_phrase(self):
+        choices = ["That was easy as 1,2,3", "I was waiting for this moment!", "Who did you think you were!", "Booooooo"]
+        return f"They call me Boss {self.name}! {random.choice(choices)}"
 
 class Game:
     """
@@ -65,8 +129,10 @@ class Game:
     """
     def __init__(self):
         self.__players = [
-            Fighter("Fighter", 20, 4),
-            Boss("Boss", 22, 5)
+            Fighter("Fighter", 100, 4),
+            Boss("Boss", 100, 5),
+            Fighter("Batman", 100, 6),
+            Boss("Venom", 100, 7),
         ]
     # a fight method
     # randomly choose a player
@@ -74,22 +140,23 @@ class Game:
     # feedback on who attacked who
     # repeat until a player no longer has health
     def fight(self):
-        while self.__players[0].is_alive() and self.__players[1].is_alive():
-            rand_num = random.randint(1, 100)  # get a random number
+        while len(self.__players) > 1:
 
-            attacker = rand_num % 2  # 0 or 1
-            attacked = 1 if attacker == 0 else 0
+            attacker = random.choice(self.__players)
+            opponents = [player for player in self.__players if player is not attacker and player.is_alive()]
+            defender = random.choice(opponents)
 
-            player_attacker = self.__players[attacker]
-            player_attacked = self.__players[attacked]
+            attacker.attack(defender)
 
-            player_attacker.attack(player_attacked)
+            if not defender.is_alive():
+                print(defender.name, "has been defeated")
+                self.__players.remove(defender)
 
-            print(player_attacker.name, "attacked", player_attacked.name, "with a power of", player_attacker.power)
-            print(player_attacked.name, "now has a health of", player_attacked.health)
+
             print("*" * 20)
 
-        print(player_attacker.name, "has won the fight")
-        print(player_attacker.shout_catch_phrase())
+        print("#" * 20)
+        print(attacker.name, "has won the fight")
+        print(attacker.shout_catch_phrase())
 fight = Game()
 fight.fight()
