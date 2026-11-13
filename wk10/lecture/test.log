@@ -1,0 +1,246 @@
+DEBUG:paramiko.transport:starting thread (client mode): 0x4590b8c0
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_4.0.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-Cisco-1.25
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1, diffie-hellman-group1-sha1
+DEBUG:paramiko.transport:server key: ssh-rsa
+DEBUG:paramiko.transport:client encrypt: aes128-cbc, 3des-cbc, aes192-cbc, aes256-cbc
+DEBUG:paramiko.transport:server encrypt: aes128-cbc, 3des-cbc, aes192-cbc, aes256-cbc
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha1-96, hmac-md5, hmac-md5-96
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha1-96, hmac-md5, hmac-md5-96
+DEBUG:paramiko.transport:client compress: none
+DEBUG:paramiko.transport:server compress: none
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Kex: diffie-hellman-group-exchange-sha1
+DEBUG:paramiko.transport:HostKey: ssh-rsa
+DEBUG:paramiko.transport:Cipher: aes128-cbc
+DEBUG:paramiko.transport:MAC: hmac-sha1
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Got server p (2048 bits)
+DEBUG:paramiko.transport:kex engine KexGex specified hash_algo <built-in function openssl_sha1>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.198.11: b'1ee64dc4dd29e68ba871802a597e71c8'
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:[chan 0] Max packet out: 4096 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:write_channel: b'terminal width 511\n'
+DEBUG:netmiko:read_channel: 
+R1#
+R1#
+DEBUG:netmiko:read_channel: te
+DEBUG:netmiko:read_channel: rminal width 511
+
+DEBUG:netmiko:Pattern found: (terminal width 511) 
+R1#
+R1#terminal width 511
+DEBUG:netmiko:In disable_paging
+DEBUG:netmiko:Command: terminal length 0
+
+DEBUG:netmiko:write_channel: b'terminal length 0\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: R1#termi
+DEBUG:netmiko:read_channel: n
+DEBUG:netmiko:read_channel: al length 0
+R1#
+DEBUG:netmiko:Pattern found: (terminal\ length\ 0) 
+R1#terminal length 0
+DEBUG:netmiko:
+R1#terminal length 0
+DEBUG:netmiko:Exiting disable_paging
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+R1#
+DEBUG:netmiko:Pattern found: ((?:\#|>)) 
+R1#
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is R1#
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: R1#
+DEBUG:netmiko:Pattern found: ([>#]) 
+R1#
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:[chan 0] EOF sent (0)
+DEBUG:paramiko.transport:EOF in transport thread
+DEBUG:paramiko.transport:starting thread (client mode): 0xc0f4b8c0
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_4.0.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-Cisco-1.25
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1, diffie-hellman-group1-sha1
+DEBUG:paramiko.transport:server key: ssh-rsa
+DEBUG:paramiko.transport:client encrypt: aes128-cbc, 3des-cbc, aes192-cbc, aes256-cbc
+DEBUG:paramiko.transport:server encrypt: aes128-cbc, 3des-cbc, aes192-cbc, aes256-cbc
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha1-96, hmac-md5, hmac-md5-96
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha1-96, hmac-md5, hmac-md5-96
+DEBUG:paramiko.transport:client compress: none
+DEBUG:paramiko.transport:server compress: none
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Kex: diffie-hellman-group-exchange-sha1
+DEBUG:paramiko.transport:HostKey: ssh-rsa
+DEBUG:paramiko.transport:Cipher: aes128-cbc
+DEBUG:paramiko.transport:MAC: hmac-sha1
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Got server p (2048 bits)
+DEBUG:paramiko.transport:kex engine KexGex specified hash_algo <built-in function openssl_sha1>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.198.11: b'1ee64dc4dd29e68ba871802a597e71c8'
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:[chan 0] Max packet out: 4096 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:write_channel: b'terminal width 511\n'
+DEBUG:netmiko:read_channel: 
+R1#
+R1#
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: terminal 
+DEBUG:netmiko:read_channel: width 511
+R1#
+DEBUG:netmiko:Pattern found: (terminal width 511) 
+R1#
+R1#terminal width 511
+DEBUG:netmiko:In disable_paging
+DEBUG:netmiko:Command: terminal length 0
+
+DEBUG:netmiko:write_channel: b'terminal length 0\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: termin
+DEBUG:netmiko:read_channel: al length 0
+
+DEBUG:netmiko:Pattern found: (terminal\ length\ 0) 
+R1#terminal length 0
+DEBUG:netmiko:
+R1#terminal length 0
+DEBUG:netmiko:Exiting disable_paging
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: R1#
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+R1#
+DEBUG:netmiko:Pattern found: ((?:\#|>)) 
+R1#
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is R1#
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+R1#
+DEBUG:netmiko:Pattern found: ([>#]) 
+R1#
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:[chan 0] EOF sent (0)
+DEBUG:paramiko.transport:EOF in transport thread
+DEBUG:paramiko.transport:starting thread (client mode): 0x751b8c0
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_4.0.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-Cisco-1.25
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+DEBUG:paramiko.transport:=== Key exchange possibilities ===
+DEBUG:paramiko.transport:kex algos: diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1, diffie-hellman-group1-sha1
+DEBUG:paramiko.transport:server key: ssh-rsa
+DEBUG:paramiko.transport:client encrypt: aes128-cbc, 3des-cbc, aes192-cbc, aes256-cbc
+DEBUG:paramiko.transport:server encrypt: aes128-cbc, 3des-cbc, aes192-cbc, aes256-cbc
+DEBUG:paramiko.transport:client mac: hmac-sha1, hmac-sha1-96, hmac-md5, hmac-md5-96
+DEBUG:paramiko.transport:server mac: hmac-sha1, hmac-sha1-96, hmac-md5, hmac-md5-96
+DEBUG:paramiko.transport:client compress: none
+DEBUG:paramiko.transport:server compress: none
+DEBUG:paramiko.transport:client lang: <none>
+DEBUG:paramiko.transport:server lang: <none>
+DEBUG:paramiko.transport:kex follows: False
+DEBUG:paramiko.transport:=== Key exchange agreements ===
+DEBUG:paramiko.transport:Kex: diffie-hellman-group-exchange-sha1
+DEBUG:paramiko.transport:HostKey: ssh-rsa
+DEBUG:paramiko.transport:Cipher: aes128-cbc
+DEBUG:paramiko.transport:MAC: hmac-sha1
+DEBUG:paramiko.transport:Compression: none
+DEBUG:paramiko.transport:=== End of kex handshake ===
+DEBUG:paramiko.transport:Got server p (2048 bits)
+DEBUG:paramiko.transport:kex engine KexGex specified hash_algo <built-in function openssl_sha1>
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Adding ssh-rsa host key for 192.168.198.11: b'1ee64dc4dd29e68ba871802a597e71c8'
+DEBUG:paramiko.transport:userauth is OK
+INFO:paramiko.transport:Authentication (password) successful!
+DEBUG:paramiko.transport:[chan 0] Max packet in: 32768 bytes
+DEBUG:paramiko.transport:[chan 0] Max packet out: 4096 bytes
+DEBUG:paramiko.transport:Secsh channel 0 opened.
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:paramiko.transport:[chan 0] Sesch channel 0 request ok
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:write_channel: b'terminal width 511\n'
+DEBUG:netmiko:read_channel: 
+R1#
+R1#
+DEBUG:netmiko:read_channel: terminal width 51
+DEBUG:netmiko:read_channel: 1
+R1#
+DEBUG:netmiko:Pattern found: (terminal width 511) 
+R1#
+R1#terminal width 511
+DEBUG:netmiko:In disable_paging
+DEBUG:netmiko:Command: terminal length 0
+
+DEBUG:netmiko:write_channel: b'terminal length 0\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: termin
+DEBUG:netmiko:read_channel: al leng
+DEBUG:netmiko:read_channel: th 0
+R1#
+DEBUG:netmiko:Pattern found: (terminal\ length\ 0) 
+R1#terminal length 0
+DEBUG:netmiko:
+R1#terminal length 0
+DEBUG:netmiko:Exiting disable_paging
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:Clear buffer detects data in the channel
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+R1#
+DEBUG:netmiko:Pattern found: ((?:\#|>)) 
+R1#
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:[find_prompt()]: prompt is R1#
+DEBUG:netmiko:write_channel: b'\n'
+DEBUG:netmiko:read_channel: 
+DEBUG:netmiko:read_channel: 
+
+DEBUG:netmiko:read_channel: R1#
+DEBUG:netmiko:Pattern found: ([>#]) 
+R1#
+DEBUG:netmiko:write_channel: b'exit\n'
+DEBUG:paramiko.transport:[chan 0] EOF sent (0)
+DEBUG:paramiko.transport:EOF in transport thread

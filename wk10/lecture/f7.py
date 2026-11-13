@@ -23,6 +23,11 @@ ft = FileTransfer(
 #    file_system="flash:"
 )
 
+
+
+# Establish SCP connection
+ft.establish_scp_conn()
+
 if not ft.check_file_exists():
     print("File does not exists, starting upload process")
     ft.transfer_file()

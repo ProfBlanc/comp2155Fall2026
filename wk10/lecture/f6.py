@@ -20,8 +20,13 @@ ft = FileTransfer(
     ssh_conn=connection,
     source_file=source_file,
     dest_file=destination_file,
-    file_system="flash:"
+    file_system="disk0:"
 )
+# Enable SCP on the Cisco device
+ft.enable_scp()
+
+# Establish SCP connection
+ft.establish_scp_conn()
 
 if not ft.check_file_exists():
     print("File does not exists, starting upload process")

@@ -1,0 +1,86 @@
+Building configuration...
+
+Current configuration : 920 bytes
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+ip domain name pnetlab.local
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+username netauto privilege 15 secret 5 $1$vtul$Iad/wYgINYGSLpKm4HWzi/
+!
+!
+!
+!
+!
+ip ssh version 2
+ip ssh pubkey-chain
+  username netauto
+   key-hash ssh-rsa C28EA33E8F6B3AFAEE113099EB7EA521 visiteur@HP-Craie
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description Windows-Management
+ ip address 192.168.198.11 255.255.255.0
+ duplex full
+!
+interface FastEthernet1/0
+ description link-to-R2
+ ip address 10.10.12.1 255.255.255.252
+ duplex full
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+end
